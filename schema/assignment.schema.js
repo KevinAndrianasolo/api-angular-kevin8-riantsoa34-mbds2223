@@ -12,7 +12,10 @@ let AssignmentSchema = Schema({
     rendu: Boolean,
     auteur: AuteurSchema,
     matiere: MatiereSchema,
-    note: Number,
+    note: {
+        type: Number,
+        required: false
+    },
     remarques: {
         type: String,
         required: false

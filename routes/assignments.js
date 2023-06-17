@@ -68,6 +68,7 @@ function postAssignment(req, res){
     matiere.nom = req.body.matiere.nom;
     matiere.photo = req.body.matiere.photo;
     matiere.prof = prof;
+
     assignment.matiere = matiere;
 
     // Attributs Additionnels : Note et Remarques
