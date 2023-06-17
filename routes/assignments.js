@@ -1,4 +1,8 @@
-let Assignment = require('../model/assignment');
+const Assignment = require('../model/assignment.model');
+const Auteur = require('../model/auteur.model');
+const Matiere = require('../model/matiere.model');
+const Prof = require('../model/prof.model');
+
 
 // Récupérer tous les assignments (GET)
 function getAssignmentsSansPagination(req, res){
@@ -45,6 +49,30 @@ function postAssignment(req, res){
     assignment.nom = req.body.nom;
     assignment.dateDeRendu = req.body.dateDeRendu;
     assignment.rendu = req.body.rendu;
+
+    assignment.rendu = req.body.rendu;
+    assignment.rendu = req.body.rendu;
+
+    // Auteur
+    let auteur = new Auteur();
+    auteur.nom = req.body.auteur.nom;
+    auteur.photo = req.body.auteur.photo;
+    assignment.auteur = auteur;
+
+    // Matiere & Prof
+    let prof = new Prof();
+    prof.nom = req.body.matiere.prof.nom;
+    prof.photo = req.body.matiere.prof.photo;
+
+    let matiere = new Matiere();
+    matiere.nom = req.body.matiere.nom;
+    matiere.photo = req.body.matiere.photo;
+    matiere.prof = prof;
+    assignment.matiere = matiere;
+
+    // Attributs Additionnels : Note et Remarques
+    assignment.note = req.body.note;
+    assignment.remarques = req.body.remarques;
 
     console.log("POST assignment reçu :");
     console.log(assignment)
