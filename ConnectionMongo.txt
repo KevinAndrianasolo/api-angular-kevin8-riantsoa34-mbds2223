@@ -1,1 +1,1 @@
-mongodb+srv://mb:toto@cluster0.5e6cs7n.mongodb.net/assignments?retryWrites=true&w=majority
+mongodb+srv://kevinandrianasolo:kpYVPuKME23EDbq0@cluster0.l8mbyvu.mongodb.net/assignments?retryWrites=true&w=majority
