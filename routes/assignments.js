@@ -43,43 +43,18 @@ function getAssignment(req, res){
 }
 
 // Ajout d'un assignment (POST)
-function postAssignment(req, res){
-    let assignment = new Assignment();
-    assignment.id = req.body.id;
-    assignment.nom = req.body.nom;
-    assignment.dateDeRendu = req.body.dateDeRendu;
-    assignment.rendu = req.body.rendu;
-
-    assignment.rendu = req.body.rendu;
-    assignment.rendu = req.body.rendu;
-
-    // Auteur
-    let auteur = new Auteur();
-    auteur.nom = req.body.auteur.nom;
-    auteur.photo = req.body.auteur.photo;
-    assignment.auteur = auteur;
-
-    // Matiere & Prof
-    let prof = new Prof();
-    prof.nom = req.body.matiere.prof.nom;
-    prof.photo = req.body.matiere.prof.photo;
-
-    let matiere = new Matiere();
-    matiere.nom = req.body.matiere.nom;
-    matiere.photo = req.body.matiere.photo;
-    matiere.prof = prof;
-
-    assignment.matiere = matiere;
-
-    // Attributs Additionnels : Note et Remarques
-    assignment.note = req.body.note;
-    assignment.remarques = req.body.remarques;
+async function postAssignment(req, res){
+    let assignment = Object.assign(new Assignment(), req.body);
 
     console.log("POST assignment reçu :");
     console.log(assignment)
 
+    // Set the id 
+    const count = await Assignment.countDocuments();
+    assignment.id=count + 1;
     assignment.save( (err) => {
         if(err){
+            console.log(err);
             res.send('cant post assignment ', err);
         }
         res.json({ message: `${assignment.nom} saved!`})

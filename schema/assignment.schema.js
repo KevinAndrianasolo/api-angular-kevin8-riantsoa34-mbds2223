@@ -1,6 +1,5 @@
 const AuteurSchema = require('./auteur.schema');
 const MatiereSchema = require('./matiere.schema');
-
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 var aggregatePaginate = require("mongoose-aggregate-paginate-v2");
