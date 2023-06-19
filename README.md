@@ -17,8 +17,24 @@
 ## Générateur de données :
 > https://mockaroo.com
 ## Base de données :
-Ancien connection string : mongodb+srv://mb:toto@cluster0.5e6cs7n.mongodb.net/assignments?retryWrites=true&w=majority
-Nouvelle connection string : mongodb+srv://kevinandrianasolo:kpYVPuKME23EDbq0@cluster0.l8mbyvu.mongodb.net/?retryWrites=true&w=majority
-Project : kevin8-riantsoa34-mbds2223
-Username : kevinandrianasolo
-Mdp : kpYVPuKME23EDbq0
+> J'ai changer la chaine de connexion mongo dans le fichier `server.js` avec `const uri =...`
+
+- Ancien connection string : mongodb+srv://mb:toto@cluster0.5e6cs7n.mongodb.net/assignments?retryWrites=true&w=majority
+- Nouvelle connection string : mongodb+srv://kevinandrianasolo:kpYVPuKME23EDbq0@cluster0.l8mbyvu.mongodb.net/?retryWrites=true&w=majority
+- Project : kevin8-riantsoa34-mbds2223
+- Username : kevinandrianasolo
+- Mdp : kpYVPuKME23EDbq0
+
+## Réorganisation des fichiers:
+- J'ai séparé `model` et `schema` pour pouvoir réutiliser les schemas dans toute l'application
+- Maintenant on a les fichiers `*.schema.js` et  `*.model.js` pour Prof, assignment, auteur et matiere
+
+## Création du route pour les Matières
+- Permet de lister les matières existantes et d'insérer une matière donnée (Pour l'insertion des données de test via Appel API venant du FRONT)
+
+## Insertion d'un assignement:
+- Pour pouvoir simuler l'auto incrémentation de l'id de l'assignement , j'ai procédé comme suit:
+```ts
+const count = await Assignment.countDocuments();
+assignment.id=count + 1; // On affecte l'id de l'assignement à insérer comme étant le nombre total des assignments + 1, car le premier id = 1
+```
