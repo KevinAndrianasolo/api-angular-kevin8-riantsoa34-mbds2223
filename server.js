@@ -47,7 +47,7 @@ let port = process.env.PORT || 8010;
 const prefix = '/api';
 
 app.route(prefix + '/assignments')
-  .get(middleware.verifyToken,assignment.getAssignments)
+  .get(assignment.getAssignments)
   .post(middleware.verifyToken,assignment.postAssignment)
   .put(middleware.roleAdmin,assignment.updateAssignment);
 
