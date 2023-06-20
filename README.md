@@ -38,3 +38,19 @@
 const count = await Assignment.countDocuments();
 assignment.id=count + 1; // On affecte l'id de l'assignement à insérer comme étant le nombre total des assignments + 1, car le premier id = 1
 ```
+## Login :
+- Pour se logger on doit d'abord créer une user :
+     "nom",
+    "email",
+    "password"
+    "role",
+    "photo"
+L email sert pour s'authentifier ,et le role c'est soit 1 pour l'admin , 0 pour les utilisateurs normales .
+-Pour le login, on ajuste besoin de email et password 
+Retourne un jwt token bearer 
+## User connecté :
+- un informations du client connectés par rapport au token donné dans le bearer
+## Securisation des requetes 
+- Edit et delete ne peut etre effectué que par admin 
+
+
